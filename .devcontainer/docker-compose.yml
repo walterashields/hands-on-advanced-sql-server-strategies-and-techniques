@@ -15,7 +15,7 @@ services:
     # user: vscode
 
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2022-lts
+    image: mcr.microsoft.com/mssql/server:2022-latest
     restart: unless-stopped
     environment:
       MSSQL_PID: "Developer"
