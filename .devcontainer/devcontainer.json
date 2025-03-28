@@ -3,7 +3,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "bash .devcontainer/startup.sh",
+  "postCreateCommand": "bash /container-config/startup.sh",  // Updated path
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
