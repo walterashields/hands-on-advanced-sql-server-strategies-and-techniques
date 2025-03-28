@@ -4,10 +4,10 @@ services:
   app:
     build:
       context: ..  # Build from root directory
-      dockerfile: .devcontainer/Dockerfile  # Explicit Dockerfile path
+      dockerfile: .devcontainer/Dockerfile  # Explicit path to Dockerfile
     volumes:
       - ..:/workspace:cached
-      - ./.devcontainer:/container-config:cached  # Add this line
+      - ./.devcontainer:/container-config:cached  # Mount .devcontainer folder
     command: sleep infinity
     network_mode: service:db
 
