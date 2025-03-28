@@ -7,8 +7,8 @@
 echo "Waiting for SQL Server to start..."
 sleep 15
 
-# Run the init-db script
-/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourStrong!Passw0rd' -i /init-db.sql
+# Run the setup script to create MoviesDB
+/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourStrong!Passw0rd' -i /container-config/setup-moviesdb.sql
 
-# Wait for the SQL Server process to end
+# Keep the container running
 wait
