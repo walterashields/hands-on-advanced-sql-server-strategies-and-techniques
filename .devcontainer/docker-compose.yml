@@ -12,8 +12,8 @@ services:
     ports:
       - "1433:1433"
     volumes:
-      - mssql-data:/var/opt/mssql
-      - ./init:/workspace/init
+      - sqlserver-data:/var/opt/mssql
+      - .:/workspace
 
 volumes:
-  mssql-data:
+  sqlserver-data:
