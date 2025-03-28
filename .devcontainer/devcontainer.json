@@ -1,7 +1,7 @@
 {
-  "name": "Your App with SQL Server",
+  "name": "Minimal SQL Server Dev Container",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
+  "service": "sqlserver",
   "workspaceFolder": "/workspace",
 
   "remoteUser": "vscode",
