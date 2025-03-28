@@ -3,6 +3,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "sqlserver",
   "workspaceFolder": "/workspace",
+  "remoteUser": "root",
 
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
