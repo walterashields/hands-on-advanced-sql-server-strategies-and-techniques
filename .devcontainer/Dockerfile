@@ -1,2 +1,26 @@
-# Empty Dockerfile (not used, but needed by devcontainer)
-FROM mcr.microsoft.com/devcontainers/base:ubuntu
+{
+  "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "GitHub.github-vscode-theme",
+        "alexcvzz.vscode-sqlite"
+        // Additional Extensions Here
+      ]
+    }
+  },
+  // Update welcome text and set terminal prompt to '$ '
+  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
+  // Pull all branches
+  "postAttachCommand": "git pull --all"
+}
+// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
