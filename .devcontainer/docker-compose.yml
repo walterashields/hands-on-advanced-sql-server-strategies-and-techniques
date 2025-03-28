@@ -14,6 +14,7 @@ services:
     networks:
       - devnetwork
 
+
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
@@ -25,10 +26,12 @@ services:
     volumes:
       - sqlvolume:/var/opt/mssql
       - ./.devcontainer/setup-moviesdb.sql:/container-config/setup-moviesdb.sql
-      - ./.devcontainer/entrypoint.sh:/entrypoint.sh
-    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
+      - ./.devcontainer/entrypoint.sh:/usr/src/app/entrypoint.sh
+    entrypoint: [ "/bin/bash", "/usr/src/app/entrypoint.sh" ]
     networks:
       - devnetwork
+
+
 
 volumes:
   sqlvolume:
