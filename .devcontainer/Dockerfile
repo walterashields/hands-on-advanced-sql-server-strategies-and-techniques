@@ -8,7 +8,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc \
     && apt-get install -y unixodbc-dev
 
-# Install any other dependencies you need
+# Install other dependencies
 RUN apt-get update && apt-get install -y \
     python3 \
     python3-pip \
@@ -17,3 +17,7 @@ RUN apt-get update && apt-get install -y \
 # Install Python requirements
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
+
+# Copy and make startup script executable
+COPY .devcontainer/startup.sh /tmp/startup.sh
+RUN chmod +x /tmp/startup.sh && mv /tmp/startup.sh /workspace/.devcontainer/
