@@ -1,13 +1,11 @@
 {
-  "name": "SQL Server Dev Container",
-  "dockerComposeFile": ["docker-compose.yml"],
-  "service": "sqlserver",
+  "name": "Your App with SQL Server",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
   "workspaceFolder": "/workspace",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
-  },
-  "extensions": [
-    "ms-mssql.mssql"
-  ],
-  "postCreateCommand": "bash .devcontainer/startup.sh"
+  "postCreateCommand": "bash .devcontainer/startup.sh",
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  }
 }
