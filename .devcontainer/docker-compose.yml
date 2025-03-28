@@ -1,40 +1,12 @@
 version: '3.8'
 
 services:
-  app:
+  sqlserver:
     build:
-      context: ..  # Build from root directory
-      dockerfile: .devcontainer/Dockerfile
-    volumes:
-      - ..:/workspace:cached
-      - ./.devcontainer:/container-config:cached
-    command: sleep infinity
-    depends_on:
-      - db
-    networks:
-      - devnetwork
-
-
-  db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      SA_PASSWORD: "YourStrong!Passw0rd"
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Developer"
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "1433:1433"
-    volumes:
-      - sqlvolume:/var/opt/mssql
-      - ./.devcontainer/setup-moviesdb.sql:/container-config/setup-moviesdb.sql
-      - ./.devcontainer/entrypoint.sh:/usr/src/app/entrypoint.sh
-    entrypoint: [ "/bin/bash", "/usr/src/app/entrypoint.sh" ]
-    networks:
-      - devnetwork
-
-
-
-volumes:
-  sqlvolume:
-
-networks:
-  devnetwork:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong!Passw0rd"
