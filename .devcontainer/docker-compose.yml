@@ -23,4 +23,4 @@ services:
       - "1433:1433"
 
 volumes:
-  - ./.devcontainer:/container-config
+  sqlvolume:
