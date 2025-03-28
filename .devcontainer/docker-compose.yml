@@ -1,35 +1,19 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
-      args:
-        VARIANT: 3-bullseye
-        NODE_VERSION: "lts/*"
-    volumes:
-      - ..:/workspace:cached
-    command: sleep infinity
-    network_mode: service:sqlserver
-    # user: vscode
-
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
     restart: unless-stopped
     environment:
-      MSSQL_PID: "Developer"
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "YourStrong!Passw0rd"
+      SA_PASSWORD: "YourStrong@Passw0rd"
+      MSSQL_PID: "Developer"
     ports:
       - "1433:1433"
     volumes:
-      - sqlserver-data:/var/opt/mssql
-    healthcheck:
-      test: [ "CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "YourStrong!Passw0rd", "-Q", "SELECT 1" ]
-      interval: 10s
-      timeout: 10s
-      retries: 10
+      - mssql-data:/var/opt/mssql
+      - ./init:/docker-entrypoint-initdb.d
 
 volumes:
-  sqlserver-data:
+  mssql-data:
