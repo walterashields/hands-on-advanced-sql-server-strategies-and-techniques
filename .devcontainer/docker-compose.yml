@@ -3,10 +3,11 @@ version: '3.8'
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ..  # Build from root directory
+      dockerfile: .devcontainer/Dockerfile  # Explicit Dockerfile path
     volumes:
       - ..:/workspace:cached
+      - ./.devcontainer:/container-config:cached  # Add this line
     command: sleep infinity
     network_mode: service:db
 
