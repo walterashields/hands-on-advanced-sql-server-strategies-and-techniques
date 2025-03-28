@@ -3,9 +3,26 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "bash /container-config/startup.sh",  // Updated path
+  "postCreateCommand": "bash /container-config/startup.sh",
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
-  }
+  },
+  "settings": {
+    "mssql.connections": [
+      {
+        "server": "localhost",
+        "database": "MoviesDB",
+        "user": "sa",
+        "password": "YourStrong!Passw0rd",
+        "authenticationType": "SqlLogin"
+      }
+    ]
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "ms-mssql.mssql",
+    "ms-vscode.sqltools"
+  ],
+  "forwardPorts": [1433]
 }
