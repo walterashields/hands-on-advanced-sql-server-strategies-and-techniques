@@ -1,44 +1,13 @@
 {
-	"name": "Python 3 & SQL Server",
-	"dockerComposeFile": "docker-compose.yml",
-	"service": "app",
-	"workspaceFolder": "/workspace",
-	"customizations": {
-		"codespaces": {
-			"openFiles": [
-				"README.md"
-			]
-		},
-		"vscode": {
-			"settings": {
-				"python.defaultInterpreterPath": "/usr/local/bin/python",
-				"python.linting.enabled": true,
-				"python.linting.pylintEnabled": true,
-				"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-				"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-				"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-				"python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-				"python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-				"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
-				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest",
-				"python.linting.pylintArgs": [
-					"--disable=C0111"
-				]
-			},
-			"extensions": [
-				"linkedinlearning.linkedinlearning-vscode-theme",
-				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"mtxr.sqltools",
-				"mtxr.sqltools-driver-mssql" // changed from mysql to mssql
-			]
-		}
-	},
-	"postCreateCommand": "sudo sh .devcontainer/startup.sh",
-	"remoteUser": "vscode",
-	"onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-	"forwardPorts": [1433]
+  "name": "SQL Server Dev Container",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "sqlserver",
+  "workspaceFolder": "/workspace",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-mssql.mssql"
+  ],
+  "postCreateCommand": "bash .devcontainer/init-db.sh"
 }
