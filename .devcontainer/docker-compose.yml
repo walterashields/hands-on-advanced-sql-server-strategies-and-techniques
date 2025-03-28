@@ -4,10 +4,10 @@ services:
   app:
     build:
       context: ..  # Build from root directory
-      dockerfile: .devcontainer/Dockerfile  # Explicit path to Dockerfile
+      dockerfile: .devcontainer/Dockerfile
     volumes:
       - ..:/workspace:cached
-      - ./.devcontainer:/container-config:cached  # Mount .devcontainer folder
+      - ./.devcontainer:/container-config:cached
     command: sleep infinity
     network_mode: service:db
 
@@ -17,10 +17,13 @@ services:
       SA_PASSWORD: "YourStrong!Passw0rd"
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Developer"
-    volumes:
-      - sqlvolume:/var/opt/mssql
     ports:
       - "1433:1433"
+    volumes:
+      - sqlvolume:/var/opt/mssql
+      - ./devcontainer/init-db.sql:/init-db.sql
+      - ./devcontainer/entrypoint.sh:/entrypoint.sh
+    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
 
 volumes:
   sqlvolume:
