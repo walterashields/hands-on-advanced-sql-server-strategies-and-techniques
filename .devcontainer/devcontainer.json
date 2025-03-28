@@ -1,10 +1,14 @@
 {
   "name": "Your App with SQL Server",
-  "image": "mcr.microsoft.com/devcontainers/dotnet:0-8.0",
-  "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-  },
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
   "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
   "settings": {
     "mssql.connections": [
       {
@@ -21,6 +25,5 @@
     "ms-mssql.mssql",
     "ms-vscode.sqltools"
   ],
-  "forwardPorts": [1433],
-  "workspaceFolder": "/workspace"
+  "forwardPorts": [1433]
 }
