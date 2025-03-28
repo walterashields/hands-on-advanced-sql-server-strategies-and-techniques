@@ -2,7 +2,7 @@
   "name": "Minimal SQL Server Dev Container",
   "dockerComposeFile": "docker-compose.yml",
   "service": "sqlserver",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces/hands-on-advanced-sql-server-strategies-and-techniques-3923010",
   "remoteUser": "root",
 
   "features": {
