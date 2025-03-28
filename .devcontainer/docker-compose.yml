@@ -13,7 +13,7 @@ services:
       - "1433:1433"
     volumes:
       - mssql-data:/var/opt/mssql
-      - ./init:/docker-entrypoint-initdb.d
+      - ./init:/workspace/init
 
 volumes:
   mssql-data:
