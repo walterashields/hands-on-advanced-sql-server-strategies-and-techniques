@@ -9,5 +9,5 @@
   "extensions": [
     "ms-mssql.mssql"
   ],
-  "postCreateCommand": "bash .devcontainer/init-db.sh"
+  "postCreateCommand": "bash .devcontainer/startup.sh"
 }
