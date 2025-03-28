@@ -1,6 +1,6 @@
 {
   "name": "SQL Server Dev Container",
-  "dockerComposeFile": "../docker-compose.yml",
+  "dockerComposeFile": "docker-compose.yml",
   "service": "sqlserver",
   "workspaceFolder": "/workspace",
   "settings": {
