@@ -9,7 +9,10 @@ services:
       - ..:/workspace:cached
       - ./.devcontainer:/container-config:cached
     command: sleep infinity
-    network_mode: service:db
+    depends_on:
+      - db
+    networks:
+      - devnetwork
 
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
@@ -24,6 +27,11 @@ services:
       - ./.devcontainer/setup-moviesdb.sql:/container-config/setup-moviesdb.sql
       - ./.devcontainer/entrypoint.sh:/entrypoint.sh
     entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
+    networks:
+      - devnetwork
 
 volumes:
   sqlvolume:
+
+networks:
+  devnetwork:
