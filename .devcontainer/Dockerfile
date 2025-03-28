@@ -15,9 +15,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python requirements
-COPY requirements.txt .
+COPY ./requirements.txt .
 RUN pip3 install -r requirements.txt
 
 # Copy and make startup script executable
-COPY .devcontainer/startup.sh /tmp/startup.sh
+COPY ./startup.sh /tmp/startup.sh
+
 RUN chmod +x /tmp/startup.sh && mv /tmp/startup.sh /workspace/.devcontainer/
