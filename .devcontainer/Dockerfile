@@ -1,26 +1,19 @@
-{
-  "customizations": {
-    "codespaces": {
-      "openFiles": [
-        "README.md"
-      ]
-    },
-    "vscode": {
-      // Set *default* container specific settings.json values on container create.
-      "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-      },
-      // Add the IDs of extensions you want installed when the container is created.
-      "extensions": [
-        "GitHub.github-vscode-theme",
-        "alexcvzz.vscode-sqlite"
-        // Additional Extensions Here
-      ]
-    }
-  },
-  // Update welcome text and set terminal prompt to '$ '
-  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
-  // Pull all branches
-  "postAttachCommand": "git pull --all"
-}
-// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
+FROM mcr.microsoft.com/vscode/devcontainers/base:ubuntu
+
+# Install SQL Server command-line tools
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/20.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    && apt-get update \
+    && ACCEPT_EULA=Y apt-get install -y msodbcsql17 mssql-tools \
+    && echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc \
+    && apt-get install -y unixodbc-dev
+
+# Install any other dependencies you need
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python requirements
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
