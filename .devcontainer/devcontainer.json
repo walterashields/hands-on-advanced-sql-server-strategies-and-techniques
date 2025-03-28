@@ -3,7 +3,7 @@
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspaces/hands-on-advanced-sql-server-strategies-and-techniques-3923010",
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {},
