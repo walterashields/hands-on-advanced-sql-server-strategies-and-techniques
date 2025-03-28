@@ -21,8 +21,8 @@ services:
       - "1433:1433"
     volumes:
       - sqlvolume:/var/opt/mssql
-      - ./devcontainer/init-db.sql:/init-db.sql
-      - ./devcontainer/entrypoint.sh:/entrypoint.sh
+      - ./.devcontainer/setup-moviesdb.sql:/container-config/setup-moviesdb.sql
+      - ./.devcontainer/entrypoint.sh:/entrypoint.sh
     entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
 
 volumes:
