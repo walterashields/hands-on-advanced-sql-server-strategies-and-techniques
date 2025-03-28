@@ -1,13 +1,7 @@
 #!/bin/bash
-
-# Wait for SQL Server to be fully up
+# Wait for SQL Server to start up
 echo "Waiting for SQL Server to start..."
-sleep 20
+sleep 15
 
-# Run the MoviesDB setup script if it exists
-if [ -f .devcontainer/setup-moviesdb.sql ]; then
-  echo "Running MoviesDB setup..."
-  /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourStrong!Passw0rd' -d master -i .devcontainer/setup-moviesdb.sql
-else
-  echo "No setup-moviesdb.sql file found. Skipping setup."
-fi
+# Run the MoviesDB SQL script
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'YourStrong@Passw0rd' -d master -i /workspace/init/MoviesDB.sql
