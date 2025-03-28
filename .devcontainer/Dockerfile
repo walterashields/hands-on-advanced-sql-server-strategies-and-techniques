@@ -21,5 +21,5 @@ RUN pip3 install -r requirements.txt
 # Copy and make startup script executable
 COPY .devcontainer/startup.sh /tmp/startup.sh
 
+RUN mkdir -p /workspace/.devcontainer && chmod +x /tmp/startup.sh && mv /tmp/startup.sh /workspace/.devcontainer/
 
-RUN chmod +x /tmp/startup.sh && mv /tmp/startup.sh /workspace/.devcontainer/
