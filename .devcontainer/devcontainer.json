@@ -1,14 +1,14 @@
 {
-  "name": "Minimal SQL Server Dev Container",
-  "dockerComposeFile": "docker-compose.yml",
+  "name": "SQL Server Dev Environment",
+  "dockerComposeFile": "../docker-compose.yml",
   "service": "sqlserver",
-  "workspaceFolder": "/workspaces/hands-on-advanced-sql-server-strategies-and-techniques-3923010",
-  "remoteUser": "root",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
   },
+
   "settings": {
     "mssql.connections": [
       {
@@ -20,10 +20,12 @@
       }
     ]
   },
+
   "extensions": [
     "ms-azuretools.vscode-docker",
     "ms-mssql.mssql",
     "ms-vscode.sqltools"
   ],
+
   "forwardPorts": [1433]
 }
