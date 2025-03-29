@@ -15,7 +15,7 @@
   "emmet.triggerExpansionOnTab": true,
   "files.autoSave": "afterDelay",
   "terminal.integrated.fontSize": 18,
-  "workbench.colorTheme": "LinkedIn Learning Dark",
+  "workbench.colorTheme": "Default Light+",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
   "sqltools.connections": [
@@ -33,5 +33,16 @@
       "password": "mariadb"
     }
   ],
-  "sqltools.useNodeRuntime": true
+  "sqltools.useNodeRuntime": true,
+  "mssql.connections": [
+    {
+      "server": "localhost,1433",
+      "database": "master",
+      "user": "SA",
+      "password": "",
+      "authenticationType": "SqlLogin",
+      "encrypt": "Optional",
+      "trustServerCertificate": true
+    }
+  ]
 }

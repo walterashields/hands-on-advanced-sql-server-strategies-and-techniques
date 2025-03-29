@@ -1,0 +1,13 @@
+{
+  "mssql.connections": [
+    {
+      "server": "localhost,1433",
+      "database": "master",
+      "user": "SA",
+      "password": "YourStrong!Passw0rd",
+      "authenticationType": "SqlLogin",
+      "encrypt": false,
+      "trustServerCertificate": true
+    }
+  ]
+}
