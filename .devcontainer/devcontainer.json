@@ -18,7 +18,6 @@
       }
     ]
   },
-  "remoteUser": "vscode",
   "runArgs": [
     "--privileged"
   ],
