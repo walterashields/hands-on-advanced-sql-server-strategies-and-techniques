@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   sqlserver:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     ports:
       - "1433:1433"
     environment:
