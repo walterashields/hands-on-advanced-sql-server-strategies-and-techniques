@@ -1,7 +1,5 @@
 {
   "name": "SQL Server Dev Environment",
-  "dockerComposeFile": "../docker-compose.yml",
-  "service": "sqlserver",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "runArgs": ["--privileged"],
   "features": {
