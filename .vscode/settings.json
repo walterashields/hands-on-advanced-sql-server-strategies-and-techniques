@@ -18,31 +18,29 @@
   "workbench.colorTheme": "Default Light+",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
+  "sqltools.useNodeRuntime": false,
   "sqltools.connections": [
     {
+      "driver": "MariaDB",
+      "name": "MariaDB Database",
+      "server": "127.0.0.1",
+      "port": 3306,
+      "database": "mariadb",
+      "username": "mariadb",
+      "password": "mariadb",
       "mysqlOptions": {
         "authProtocol": "default"
       },
-      "previewLimit": 50,
-      "server": "127.0.0.1",
-      "port": 3306,
-      "driver": "MariaDB",
-      "name": "MariaDB Database",
-      "database": "mariadb",
-      "username": "mariadb",
-      "password": "mariadb"
-    }
-  ],
-  "sqltools.useNodeRuntime": true,
-  "mssql.connections": [
+      "previewLimit": 50
+    },
     {
-      "server": "localhost,1433",
+      "driver": "MSSQL",
+      "name": "Local SQL Server",
+      "server": "localhost",
+      "port": 1433,
       "database": "master",
-      "user": "SA",
-      "password": "",
-      "authenticationType": "SqlLogin",
-      "encrypt": "Optional",
-      "trustServerCertificate": true
+      "username": "sa",
+      "password": "YourStrong!Passw0rd"
     }
   ]
 }
