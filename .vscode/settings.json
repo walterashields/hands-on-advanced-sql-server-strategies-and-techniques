@@ -15,23 +15,32 @@
   "emmet.triggerExpansionOnTab": true,
   "files.autoSave": "afterDelay",
   "terminal.integrated.fontSize": 18,
-  "workbench.colorTheme": "LinkedIn Learning Dark",
+  "workbench.colorTheme": "Default Light+",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
+  "sqltools.useNodeRuntime": false,
   "sqltools.connections": [
     {
+      "driver": "MariaDB",
+      "name": "MariaDB Database",
+      "server": "127.0.0.1",
+      "port": 3306,
+      "database": "mariadb",
+      "username": "mariadb",
+      "password": "mariadb",
       "mysqlOptions": {
         "authProtocol": "default"
       },
-      "previewLimit": 50,
-      "server": "127.0.0.1",
-      "port": 3306,
-      "driver": "MariaDB",
-      "name": "MariaDB Database",
-      "database": "mariadb",
-      "username": "mariadb",
-      "password": "mariadb"
+      "previewLimit": 50
+    },
+    {
+      "driver": "MSSQL",
+      "name": "Local SQL Server",
+      "server": "localhost",
+      "port": 1433,
+      "database": "master",
+      "username": "sa",
+      "password": "YourStrong!Passw0rd"
     }
-  ],
-  "sqltools.useNodeRuntime": true
+  ]
 }

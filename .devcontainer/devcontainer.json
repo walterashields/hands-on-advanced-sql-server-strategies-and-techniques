@@ -1,29 +1,34 @@
 {
-  "name": "Your App with SQL Server",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "dockerComposeFile": "docker-compose.yml",
-  "service": "app",
-  "workspaceFolder": "/workspaces/hands-on-advanced-sql-server-strategies-and-techniques-3923010",
-  "remoteUser": "vscode",
+  "name": "SQL Server Dev Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
-  "settings": {
-    "mssql.connections": [
-      {
-        "server": "localhost",
-        "database": "master",
-        "user": "sa",
-        "password": "YourStrong!Passw0rd",
-        "authenticationType": "SqlLogin"
-      }
-    ]
+  "postCreateCommand": "docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong!Passw0rd' -p 1433:1433 --name sqlserver -d mcr.microsoft.com/mssql/server:2022-latest || true && sleep 20 && docker cp scripts/moviesdb.sql sqlserver:/tmp/moviesdb.sql && docker exec sqlserver /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourStrong!Passw0rd' -N -C -i /tmp/moviesdb.sql || true",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "mssql.connections": [
+          {
+            "server": "localhost",
+            "database": "master",
+            "user": "sa",
+            "password": "YourStrong!Passw0rd",
+            "authenticationType": "SqlLogin",
+            "trustServerCertificate": true
+          }
+        ]
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mssql"
+      ]
+    }
   },
-  "extensions": [
-    "ms-azuretools.vscode-docker",
-    "ms-mssql.mssql",
-    "ms-vscode.sqltools"
-  ],
-  "forwardPorts": [1433]
+  "forwardPorts": [
+    1433
+  ]
 }

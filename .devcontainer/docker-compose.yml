@@ -1,47 +1,10 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: ..  # Build from root directory
-      dockerfile: .devcontainer/Dockerfile
-    volumes:
-      - ..:/workspace:cached
-      - ./.devcontainer:/container-config:cached
-    command: sleep infinity
-    depends_on:
-      - db
-    networks:
-      devnetwork:
-        ipv4_address: 172.28.1.10
-
-  db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    environment:
-      SA_PASSWORD: "YourStrong!Passw0rd"
-      ACCEPT_EULA: "Y"
-      MSSQL_PID: "Developer"
+  sqlserver:
+    build: .
     ports:
       - "1433:1433"
-    volumes:
-      - sqlvolume:/var/opt/mssql
-      - ./.devcontainer/setup-moviesdb.sql:/container-config/setup-moviesdb.sql
-      - ./.devcontainer/entrypoint.sh:/entrypoint.sh
-    entrypoint: [ "/bin/bash", "/entrypoint.sh" ]
-    networks:
-      devnetwork:
-        ipv4_address: 172.28.1.11
-
-volumes:
-  sqlvolume:
-
-networks:
-  devnetwork:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.28.0.0/16
-          gateway: 172.28.0.1
-    driver_opts:
-      com.docker.network.bridge.enable_icc: "true"
-      com.docker.network.bridge.enable_ip_masquerade: "true"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "YourStrong!Passw0rd"
